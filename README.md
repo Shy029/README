@@ -28,3 +28,5 @@ use new one
 we are using the colab notebook for running the code.
 simply download the files.
 upload it in the colab .upload foladers also.then make a account on ngrok copy paste the authtoken 
+# create a templates folder and store index.html there
+# create a static folde rand export data of zip file there
