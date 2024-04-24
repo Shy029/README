@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neel Care</title>
+  <style>
+    
+  </style>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script> //For Smooth Scrolling while clicking internal links
+    document.addEventListener("DOMContentLoaded", function() {
+        const links = document.querySelectorAll('a[href^="#"]');
+        
+        links.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute("href").substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: "smooth" // Smooth scroll behavior
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+</head>
+<body>
+<header>
+
+        <img class="logo" src="{{ url_for('static', filename='images/logo_hk.png') }}" alt="">
+        <nav>
+            <ul class="nav__links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#symptom-checker">Symptom Checker</a></li>
+         	<li><a href="#">Find a Doctor</a></li>
+           	<li><a href="#">Health Information Library</a></li>
+            </ul>
+        </nav>
+
+        <a href="#" class="cta"><button>About Me</button></a>
+
+</header>
+
+  <main>
+    <section class="hero">
+	  <h1 class="title">
+          <span class="gradient-text">Get the care you deserve.</span>
+        </h1>
+
+      <p>Your Health, Our Priority: Reliable Medical Guidance at Your Fingertips.</p>
+    </section>
+    <section class="services" id="services-section">
+      <h2 >Our Services</h2>
+      <ul>
+        <li><a href="#symptom-checker">Symptom Checker</a></li>
+        <li><a href="#">Find a Doctor</a></li>
+        <li><a href="#">Health Information Library</a></li>
+      </ul>
+	  <section id="symptom-checker"></section>
+	  <div class="form-container">
+		<form id="symptomsForm" action="/" method="POST">
+		<h2 >Symptom Checker</h2>
+        <input type="text" placeholder="Enter symptoms" id="symptoms" name="symptoms" required>
+		<div class="form-row">
+		<input type="number" placeholder="Enter age (Optional)" id="age" name="age" min="0" max="120">
+        <select id="gender" name="gender">
+            <option class="selgen" value="" disabled selected>Select Gender(Optional)</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <input type="number" placeholder="Enter weight (Optional)" id="weight" name="weight" min="0" max="200">
+		</div>
+        <button Class="form-button type="submit"><a href="#symres"> Proceed</button></a>
+		</form>
+		<br><br>
+          <section id="symres"></section>
+		{% if diagnosis %}
+		<div id="resultContainer" class="symptom-result">
+			<h2 >Report</h2>
+            <h3>Symptoms:</h3>
+            <p class="placeholder" id="diseasePlaceholder">
+                {% for i in symptoms %}
+                 <li>{{ i }}</li>
+                {% endfor %}
+            </p>
+			<h3>Diagnosis:</h3>
+			<p class="placeholder" id="diseasePlaceholder"><b>{{ diagnosis }}</b></p>
+            <br>
+			<button type="doctor">Recommend Doctor</button>
+		</div>
+		{% endif %}
+
+	  </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-section made-by">
+        <p>Made by Shyamli Rupam</p>
+    </div>
+    <div class="footer-section company">
+        <p>&copy; Neel Care, 2024</p>
+    </div>
+    <div class="footer-section social-links">
+        <a href="https://codeforces.com/profile/Shyamli_29" target="_blank">
+            <img src="{{ url_for('static', filename='images/codeforces.webp') }}" alt="Codeforces">
+        </a>
+        <a href="https://leetcode.com/shyamli_29/" target="_blank">
+            <img class="leetcode" src="{{ url_for('static', filename='images/leetcode.png') }}" alt="LeetCode">
+        </a>
+        <a href="https://www.linkedin.com/in/shyamli-rupam-479422235" target="_blank">
+            <img src="{{ url_for('static', filename='images/linkedin.png') }}" alt="LinkedIn">
+        </a>
+    </div>
+</footer>
+</body>
+</html>
