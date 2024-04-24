@@ -9,3 +9,7 @@ This project provides a basic medical assistant that uses Artificial Intelligenc
 * Enter your symptoms separated by commas (e.g., fever, cough).
 * The program will analyze the symptoms and suggest potential diagnoses.
 
+# Technology Stack:
+Frontend: HTML, CSS, JavaScript (JS)
+Backend: Python (Spark for model processing)
+Machine Learning Model: Collaborative Filtering (ALS)
